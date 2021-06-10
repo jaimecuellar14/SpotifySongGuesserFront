@@ -1,13 +1,17 @@
 <div class="login-page">
   <div class="login-form">
     <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-      <label>Inserte su correo electronico</label>
-      <input formControlName="email"/>
-      <br/>
-      <label>Introduzca su password</label>
-      <input type="password" formControlName="password"/>
-      <br/>
-      <button type="submit" [disabled]="!loginForm.valid">Login</button>
+      <div class="email_group">
+        <label>Inserte su correo electronico</label>
+        <input formControlName="email" placeholder="Email"/>
+        <br/>
+      </div>
+      <div class="password_group">
+        <label>Introduzca su password</label>
+        <input type="password" formControlName="password" placeholder="Password"/>
+        <br/>
+      </div>
+      <button class="login-button" type="submit" [disabled]="!loginForm.valid">Login</button>
     </form>
   </div>
 </div>
