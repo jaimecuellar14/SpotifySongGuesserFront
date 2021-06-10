@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class AppComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder){}
+  constructor(private formBuilder: FormBuilder, private http: HttpClient){}
   title = 'SpotifySongGuesserFront';
 
   loginForm = new FormGroup({
@@ -17,8 +18,7 @@ export class AppComponent implements OnInit {
   });
   // tslint:disable-next-line:typedef
   onSubmit(){
-    console.log(this.loginForm.get('email').value);
-    console.log(this.loginForm.get('password').value);
+    this.login();
   }
   // tslint:disable-next-line:typedef
   ngOnInit(){
@@ -30,6 +30,18 @@ export class AppComponent implements OnInit {
       password: new FormControl('', [
         Validators.required
       ])
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  login(){
+    let data = {
+      email: this.loginForm.get('email').value,
+      password: this.loginForm.get('password').value
+    };
+
+    this.http.post<any>('localhost:3000/users', data).subscribe(res => {
+      console.log(res);
     });
   }
 }
