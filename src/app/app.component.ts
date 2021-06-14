@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
       password: this.loginForm.get('password').value
     };
 
-    this.http.post<any>('localhost:3000/users', data).subscribe(res => {
+    this.http.post<any>('http://localhost:3000/login', data).subscribe(res => {
       console.log(res);
     });
   }
