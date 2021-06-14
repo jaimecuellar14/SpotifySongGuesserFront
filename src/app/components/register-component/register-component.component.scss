@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Viaoda+Libre&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Viaoda+Libre&display=swap');
+.register-page{
+    display: flex;
+    flex-direction: row;
+}
+
+.register-info{
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    background-image: -webkit-linear-gradient(top left, #74b4bd, #2a4755);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Hammersmith One', sans-serif;
+}
+.register-form{
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-image: -webkit-linear-gradient(top left, #223233, #1d5e92);
+
+}
+.form-fields{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-fields input{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+.register-button{
+    width: 20rem;
+    height: 3rem;
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: 'Viaoda Libre', cursive;
+}
+
+.register-button:hover{
+    background-image: -webkit-linear-gradient(top left, #446fcc, #6a85d1);
+}
+
+input{
+    padding:10px;
+    border:0;
+    box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius: 10px;
+    font-family: 'Viaoda Libre', cursive;
+}

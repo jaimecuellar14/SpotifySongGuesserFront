@@ -1,13 +1,17 @@
-<div register-page>
-    <div>
-        <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
-
+<div class="register-page">
+    <div class="register-info">
+        <h1>La aplicacion donde puedes poner a prueba</h1>
+        <h2>Tus conocimientos en musica</h2>
+        <h3>Y pasarla genial con todos tus amigos!</h3>
+        <h3>Registrate ahora</h3>
+    </div>
+    <div class="register-form">
+        <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" class="form-fields">
             <input formControlName="email" placeholder="Introduzca su email"/>
             <input formControlName="name" placeholder="Introduzca su nombre"/>
             <input formControlName="phoneNumber" placeholder="Introduzca su numero de telefono"/>
             <input formControlName="password" placeholder="Introduzca su contrase;a"/>
-            <button type="submit" [disabled]="!registerForm.valid">Registrarse</button>
-
+            <button class="register-button" type="submit" [disabled]="!registerForm.valid">Registrarse</button>
         </form>
     </div>
 </div>
