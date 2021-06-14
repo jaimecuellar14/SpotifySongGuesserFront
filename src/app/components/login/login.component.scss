@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@700&family=Mate+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Viaoda+Libre&display=swap');
 
 .login-page{
     height:100vh;
@@ -38,13 +39,25 @@ input{
     height: 1.3rem;
     width: 15rem;
     font-family: 'Mate SC', serif;
+    box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+    border:0;
+    padding: 10px;
+    font-family: 'Viaoda Libre', cursive;
+    border-radius: 10px;
 }
 
 .login-button{
-    width: 15rem;
-    height: 2rem;
-    background-color: #83cbdd;
-    color:white;
-    font-family: 'Baloo Tammudu 2', cursive;
-    letter-spacing: 3px;
+    width: 10rem;
+    height: 3rem;
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: 'Viaoda Libre', cursive;
+    color:white
+}
+.login-button:hover{
+    background-image: -webkit-linear-gradient(top left, #446fcc, #6a85d1);
+}
+label{
+    color: white;
 }
