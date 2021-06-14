@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient){}
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router){}
   title = 'SpotifySongGuesserFront';
 
   loginForm = new FormGroup({
@@ -35,7 +36,7 @@ export class AppComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   login(){
-    let data = {
+    const data = {
       email: this.loginForm.get('email').value,
       password: this.loginForm.get('password').value
     };
@@ -43,5 +44,10 @@ export class AppComponent implements OnInit {
     this.http.post<any>('http://localhost:3000/login', data).subscribe(res => {
       console.log(res);
     });
+  }
+
+  // tslint:disable-next-line:typedef
+  goToRegister(){
+    this.router.navigate(['register']);
   }
 }

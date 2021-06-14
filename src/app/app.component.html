@@ -12,7 +12,9 @@
         <br/>
       </div>
       <button class="login-button" type="submit" [disabled]="!loginForm.valid">Login</button>
-      <a href="#">No tienes una cuenta? Registrate ahora !</a>
+      <br/>
+      <br/>
+      <button class="register-button" (click)="goToRegister()">No tienes una cuenta? Registrate ahora!</button>
     </form>
   </div>
 </div>
