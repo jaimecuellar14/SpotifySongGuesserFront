@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-register-component',
@@ -15,7 +17,7 @@ export class RegisterComponentComponent implements OnInit {
     password: new FormControl(),
   });
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -29,21 +31,24 @@ export class RegisterComponentComponent implements OnInit {
       phoneNumber: new FormControl('', [
         Validators.required,
       ]),
-      password: new FormControl('',[
+      password: new FormControl('', [
         Validators.required
       ])
     });
   }
 
+  // tslint:disable-next-line:typedef
   onSubmit(){
     this.register();
   }
 
+  // tslint:disable-next-line:typedef
   register(){
-    console.log(this.registerForm.get('email').value);
-    console.log(this.registerForm.get('name').value);
-    console.log(this.registerForm.get('phoneNumber').value);
-    console.log(this.registerForm.get('password').value);
+    const newUser = new User(this.registerForm.get('name').value, this.registerForm.get('email').value,
+    this.registerForm.get('password').value, this.registerForm.get('phoneNumber').value);
+    this.httpClient.post<User>('localhost:3000/register', newUser).subscribe(res => {
+      console.log(res);
+    });
   }
 
 }
