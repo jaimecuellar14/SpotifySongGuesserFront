@@ -1,1 +1,13 @@
-<p>register-component works!</p>
+<div register-page>
+    <div>
+        <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+
+            <input formControlName="email" placeholder="Introduzca su email"/>
+            <input formControlName="name" placeholder="Introduzca su nombre"/>
+            <input formControlName="phoneNumber" placeholder="Introduzca su numero de telefono"/>
+            <input formControlName="password" placeholder="Introduzca su contrase;a"/>
+            <button type="submit" [disabled]="!registerForm.valid">Registrarse</button>
+
+        </form>
+    </div>
+</div>
