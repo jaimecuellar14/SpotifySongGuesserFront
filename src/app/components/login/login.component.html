@@ -2,13 +2,13 @@
     <div class="login-form">
       <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
         <div class="email_group">
-          <label>Inserte su correo electronico</label>
-          <input formControlName="email" placeholder="Email"/>
+          <input formControlName="email" placeholder="Introduzca su email"/>
+          <span class="error" *ngIf="email.invalid && email.touched">El correo es obligatorio</span>
           <br/>
         </div>
         <div class="password_group">
-          <label>Introduzca su password</label>
-          <input type="password" formControlName="password" placeholder="Password"/>
+          <input type="password" formControlName="password" placeholder="Introduzca su contrase;a"/>
+          <span class="error" *ngIf="password.invalid && password.touched">Contrase;a obligatoria</span>
           <br/>
         </div>
         <button class="login-button" type="submit" [disabled]="!loginForm.valid">Login</button>
