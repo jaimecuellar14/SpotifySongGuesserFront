@@ -51,4 +51,12 @@ export class RegisterComponentComponent implements OnInit {
     });
   }
 
+  // tslint:disable-next-line:typedef
+  get email(){ return this.registerForm.get('email'); }
+  // tslint:disable-next-line:typedef
+  get name(){ return this.registerForm.get('name'); }
+  // tslint:disable-next-line:typedef
+  get phoneNumber(){ return this.registerForm.get('phoneNumber'); }
+  // tslint:disable-next-line:typedef
+  get password(){ return this.registerForm.get('password'); }
 }
