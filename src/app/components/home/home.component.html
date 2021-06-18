@@ -1,1 +1,14 @@
-<p>home works!</p>
+<div class="home-page">
+    <div class="home-header">
+        <p>Selecciona los generos de musica con los que quieres empezar a jugar!</p>
+    </div>
+    <div class="home-body">
+        <mat-grid-list cols="2" rowHeight="2:1">
+            <mat-grid-tile *ngFor="let genero of generos">
+                <mat-card>
+                    <mat-card-title>{{genero.nombre}} - Test</mat-card-title>
+                </mat-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+</div>
