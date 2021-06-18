@@ -3,13 +3,14 @@
 .register-page{
     display: flex;
     flex-direction: row;
+    background-image: -webkit-linear-gradient(top left, #461da5, #d450d4);
+
 }
 
 .register-info{
     display: flex;
     height: 100vh;
     width: 100%;
-    background-image: -webkit-linear-gradient(top left, #74b4bd, #2a4755);
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -22,7 +23,7 @@
     width: 100%;
     align-items: center;
     justify-content: center;
-    background-image: -webkit-linear-gradient(top left, #223233, #1d5e92);
+
 
 }
 .form-fields{
