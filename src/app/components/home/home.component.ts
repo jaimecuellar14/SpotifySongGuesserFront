@@ -7,10 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  generos: object[] = [ { nombre: 'Rock alternativo'}, { nombre: 'Indie'}, { nombre: 'Pop'}, { nombre: 'Jazz'} ];
+  generos: any[] = [ { nombre: 'Rock alternativo', selected: false},
+   { nombre: 'Indie', selected: false}, { nombre: 'Pop', selected: false}, { nombre: 'Jazz', selected: false} ];
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  selectGender(gender){
+    gender.selected = !gender.selected;
+  }
+
+  checkSelectedGenders(){
+    let selectedGenders = this.generos.filter(elem => elem.selected === true);
+    console.log(selectedGenders);
+  }
+
+  next(){
+    this.checkSelectedGenders();
+  }
 }

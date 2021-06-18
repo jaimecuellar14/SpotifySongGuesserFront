@@ -5,10 +5,11 @@
     <div class="home-body">
         <mat-grid-list cols="2" rowHeight="2:1">
             <mat-grid-tile *ngFor="let genero of generos">
-                <mat-card>
-                    <mat-card-title>{{genero.nombre}} - Test</mat-card-title>
+                <mat-card (click)="selectGender(this.genero)" [ngClass]="{'selected' : this.genero.selected}">
+                    <mat-card-title>{{genero.nombre}}</mat-card-title>
                 </mat-card>
             </mat-grid-tile>
         </mat-grid-list>
+        <button (click)="next()">Siguiente!</button>
     </div>
 </div>
