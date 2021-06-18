@@ -8,7 +8,7 @@
     align-items: center;
     justify-content: center;  
     background-color: gray;
-    background-image: -webkit-linear-gradient(top left, #461da5, #2833d1);
+    background-image: -webkit-linear-gradient(top left, #461da5, #d450d4);
 }
 
 .login-form{
@@ -20,8 +20,7 @@
     text-align: center;
     border-radius: 10%;
     background-color: white;
-    background-color: gray;
-    background-image: -webkit-linear-gradient(top left, #182381, #1d5e92);
+   // background-image: -webkit-linear-gradient(top left, #182381, #1d5e92);
 }
 
 .email_group{
@@ -44,6 +43,7 @@ input{
     padding: 10px;
     font-family: 'Viaoda Libre', cursive;
     border-radius: 10px;
+    background-color: rgb(212, 209, 209);
 }
 
 .login-button{
@@ -53,7 +53,8 @@ input{
     border-radius: 10px;
     font-size: 20px;
     font-family: 'Viaoda Libre', cursive;
-    color:white
+    color:white;
+    background-color: hotpink;
 }
 .login-button:hover{
     background-image: -webkit-linear-gradient(top left, #446fcc, #6a85d1);
