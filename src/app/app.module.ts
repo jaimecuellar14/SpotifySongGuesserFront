@@ -12,6 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { MatCardModule } from '@angular/material/card';
     BrowserAnimationsModule,
     MatGridListModule,
     MatCardModule,
+    MatProgressSpinnerModule
   ],
   providers: [ CookieService ],
   bootstrap: [AppComponent]
