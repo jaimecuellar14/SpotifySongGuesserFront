@@ -3,14 +3,13 @@
         <p>Selecciona los generos de musica con los que quieres empezar a jugar!</p>
     </div>
     <div class="home-body">
-        <mat-grid-list cols="2" rowHeight="2:1">
-            <mat-grid-tile *ngFor="let genero of generos">
-                <mat-card (click)="selectGender(this.genero)" [ngClass]="{'selected' : this.genero.selected}">
-                    <mat-card-title>{{genero.nombre}}</mat-card-title>
+        <mat-grid-list cols="2" rowHeight="2:1" *ngIf="loaded">
+            <mat-grid-tile *ngFor="let category of categories">
+                <mat-card (click)="selectGender(this.category)" [ngClass]="{'selected' : this.category.selected}">
+                    <mat-card-title>{{category.name}}</mat-card-title>
                 </mat-card>
             </mat-grid-tile>
         </mat-grid-list>
         <button (click)="next()">Siguiente!</button>
-        <mat-spinner></mat-spinner>
     </div>
 </div>
