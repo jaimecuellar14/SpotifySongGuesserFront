@@ -1,8 +1,9 @@
 import { Component, OnInit, ChangeDetectorRef  } from '@angular/core';
-import { HttpClient , HttpParams, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { CookieService } from 'ngx-cookie-service';
 import { SpotifyService } from '../../services/spotify.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
   categories;
   loaded: boolean;
   constructor(private httpClient: HttpClient, private cookieService: CookieService, private spotifyService: SpotifyService, 
-              private cdr: ChangeDetectorRef ) { }
+              private cdr: ChangeDetectorRef, private router: Router ) { }
 
   ngOnInit() {
     this.loaded = false;
@@ -45,10 +46,15 @@ export class HomeComponent implements OnInit {
 
   checkSelectedGenders(){
     let selectedGenders = this.categories.filter(elem => elem.selected === true);
-    console.log(selectedGenders);
+    return selectedGenders;
   }
 
   next(){
-    this.checkSelectedGenders();
+    const selectedGenders = this.checkSelectedGenders();
+    if (selectedGenders.length !== 0){
+      this.router.navigate(['playlists']);
+    }else{
+      console.log('No category selected');
+    }
   }
 }

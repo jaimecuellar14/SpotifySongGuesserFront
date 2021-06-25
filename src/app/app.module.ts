@@ -14,6 +14,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatBadgeModule } from '@angular/material/badge';
+import { PlaylistsComponent } from './components/playlists/playlists/playlists.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     AppComponent,
     RegisterComponentComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    PlaylistsComponent
   ],
   imports: [
     BrowserModule,
