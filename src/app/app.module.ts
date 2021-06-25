@@ -15,6 +15,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatBadgeModule } from '@angular/material/badge';
 import { PlaylistsComponent } from './components/playlists/playlists/playlists.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CategoryDialogComponent } from './elements/category-dialog/category-dialog.component';
 
 
 @NgModule({
@@ -23,7 +25,8 @@ import { PlaylistsComponent } from './components/playlists/playlists/playlists.c
     RegisterComponentComponent,
     LoginComponent,
     HomeComponent,
-    PlaylistsComponent
+    PlaylistsComponent,
+    CategoryDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { PlaylistsComponent } from './components/playlists/playlists/playlists.c
     MatGridListModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatDialogModule
   ],
   providers: [ CookieService ],
   bootstrap: [AppComponent]

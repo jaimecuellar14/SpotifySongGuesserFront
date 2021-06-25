@@ -4,6 +4,8 @@ import { environment } from '../../../environments/environment';
 import { CookieService } from 'ngx-cookie-service';
 import { SpotifyService } from '../../services/spotify.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { CategoryDialogComponent } from '../../elements/category-dialog/category-dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +16,7 @@ export class HomeComponent implements OnInit {
   categories;
   loaded: boolean;
   constructor(private httpClient: HttpClient, private cookieService: CookieService, private spotifyService: SpotifyService, 
-              private cdr: ChangeDetectorRef, private router: Router ) { }
+              private cdr: ChangeDetectorRef, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.loaded = false;
@@ -49,11 +51,19 @@ export class HomeComponent implements OnInit {
     return selectedGenders;
   }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(CategoryDialogComponent);
+
+    dialogRef.afterClosed().subscribe(reuslt => {
+      console.log('dialog closed');
+    });
+  }
   next(){
     const selectedGenders = this.checkSelectedGenders();
     if (selectedGenders.length !== 0){
       this.router.navigate(['playlists']);
     }else{
+      this.openDialog();
       console.log('No category selected');
     }
   }
