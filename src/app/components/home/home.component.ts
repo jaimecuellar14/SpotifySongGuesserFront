@@ -12,8 +12,6 @@ import { SpotifyService } from '../../services/spotify.service';
 export class HomeComponent implements OnInit {
   categories;
   loaded: boolean;
-  generos: any[] = [ { nombre: 'Rock alternativo', selected: false},
-   { nombre: 'Indie', selected: false}, { nombre: 'Pop', selected: false}, { nombre: 'Jazz', selected: false} ];
   constructor(private httpClient: HttpClient, private cookieService: CookieService, private spotifyService: SpotifyService, 
               private cdr: ChangeDetectorRef ) { }
 
@@ -46,7 +44,7 @@ export class HomeComponent implements OnInit {
   }
 
   checkSelectedGenders(){
-    let selectedGenders = this.generos.filter(elem => elem.selected === true);
+    let selectedGenders = this.categories.filter(elem => elem.selected === true);
     console.log(selectedGenders);
   }
 

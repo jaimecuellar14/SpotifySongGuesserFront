@@ -5,8 +5,12 @@
     <div class="home-body">
         <mat-grid-list cols="2" rowHeight="2:1" *ngIf="loaded">
             <mat-grid-tile *ngFor="let category of categories">
-                <mat-card (click)="selectGender(this.category)" [ngClass]="{'selected' : this.category.selected}">
-                    <mat-card-title>{{category.name}}</mat-card-title>
+                <mat-card (click)="selectGender(this.category)" >
+                    <mat-card-content>
+                        <p *ngIf="this.category.selected" matBadge="✔️" matBadgeOverlap="false" matBadgePosition="above"></p>
+                        <p>{{category.name}}</p>
+                    </mat-card-content>
+                    <img mat-card-image src="{{category.icons[0].url}}" alt="{{category.name}}">
                 </mat-card>
             </mat-grid-tile>
         </mat-grid-list>
