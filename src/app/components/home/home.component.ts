@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { CookieService } from 'ngx-cookie-service';
 import { SpotifyService } from '../../services/spotify.service';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CategoryDialogComponent } from '../../elements/category-dialog/category-dialog.component';
 
@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
       this.loaded = true;
       this.categories = res.categories.items;
       this.modifyCategories(this.categories);
+      localStorage.setItem('categories', JSON.stringify(this.categories));
       this.cdr.detectChanges();
     });
   }
@@ -60,8 +61,16 @@ export class HomeComponent implements OnInit {
   }
   next(){
     const selectedGenders = this.checkSelectedGenders();
+    const navigationExtras: NavigationExtras = {
+      state: {
+        data: selectedGenders
+      }
+    };
+
     if (selectedGenders.length !== 0){
-      this.router.navigate(['playlists']);
+      console.log(selectedGenders);
+      localStorage.setItem('selectedCategories', JSON.stringify(selectedGenders));
+      this.router.navigate(['playlists'], navigationExtras);
     }else{
       this.openDialog();
       console.log('No category selected');

@@ -1,1 +1,21 @@
-<p>playlists works!</p>
+<p>Select the playlist from the list of each category you chose!</p>
+
+<mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile *ngFor="let category of categories; let i = index">
+        <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true && getPlayList(this.category.id, i)"
+                               (closed)="panelOpenState = false"
+                               >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                  {{category.name}}
+              </mat-panel-title>
+              <mat-panel-description >
+                Clickear para mostrar/ocular las playlists
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p *ngFor="let playlist of this.category.playlists">{{playlist.description}}</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+    </mat-grid-tile>
+  </mat-grid-list>

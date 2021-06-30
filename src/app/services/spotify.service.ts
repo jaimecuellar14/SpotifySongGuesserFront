@@ -51,4 +51,10 @@ export class SpotifyService {
     .set('Authorization', `Bearer ${this.cookieService.get('spotify-token')}`);
     return this.httpClient.get<any>('https://api.spotify.com/v1/browse/categories', { headers });
   }
+
+  getPlayLists(playListId) {
+    const headers = new HttpHeaders()
+      .set('Authorization', `Bearer ${this.cookieService.get('spotify-token')}`);
+    return this.httpClient.get<any>(`https://api.spotify.com/v1/browse/categories/${playListId}/playlists`, { headers });
+  }
 }

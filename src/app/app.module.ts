@@ -17,6 +17,9 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { PlaylistsComponent } from './components/playlists/playlists/playlists.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CategoryDialogComponent } from './elements/category-dialog/category-dialog.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDividerModule } from '@angular/material/divider';
+
 
 
 @NgModule({
@@ -39,7 +42,9 @@ import { CategoryDialogComponent } from './elements/category-dialog/category-dia
     MatCardModule,
     MatProgressSpinnerModule,
     MatBadgeModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule,
+    MatDividerModule
   ],
   providers: [ CookieService ],
   bootstrap: [AppComponent]
