@@ -20,6 +20,8 @@ import { CategoryDialogComponent } from './elements/category-dialog/category-dia
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { MatListModule } from '@angular/material/list';
     MatDialogModule,
     MatExpansionModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatCheckboxModule
   ],
   providers: [ CookieService ],
   bootstrap: [AppComponent]
