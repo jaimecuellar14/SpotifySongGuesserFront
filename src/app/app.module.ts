@@ -19,8 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CategoryDialogComponent } from './elements/category-dialog/category-dialog.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
-
-
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -44,7 +43,8 @@ import { MatDividerModule } from '@angular/material/divider';
     MatBadgeModule,
     MatDialogModule,
     MatExpansionModule,
-    MatDividerModule
+    MatDividerModule,
+    MatListModule
   ],
   providers: [ CookieService ],
   bootstrap: [AppComponent]

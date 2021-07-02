@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SpotifyService } from '../../../services/spotify.service';
+import { CookieService } from 'ngx-cookie-service';
+import { environment } from '../../../../environments/environment';
+
 
 @Component({
   selector: 'app-playlists',
@@ -10,7 +13,7 @@ import { SpotifyService } from '../../../services/spotify.service';
 export class PlaylistsComponent implements OnInit {
   categories: any;
   panelOpenState: boolean;
-  constructor(private router: Router, private spotifyService: SpotifyService) { }
+  constructor(private router: Router, private spotifyService: SpotifyService, private cookieService: CookieService) { }
   navigation = this.router.getCurrentNavigation();
   ngOnInit(): void {
     this.navigation.extras.state ? this.categories = this.navigation.extras.state.data :
@@ -34,9 +37,26 @@ export class PlaylistsComponent implements OnInit {
 
   getPlayList(id, index){
     const res = this.spotifyService.getPlayLists(id);
+    console.log(res);
     res.subscribe((playlist) => {
+      console.log(playlist);
       this.categories[index].playlists = playlist.playlists.items;
       console.log(this.categories[index]);
+    },
+    (error) => {
+      console.log(error.error);
+      if (error.error.error.message === 'The access token expired') {
+        this.spotifyService._clientId = environment.client_id;
+        this.spotifyService._clientSecret = environment.client_secret;
+        const token = this.spotifyService.refreshToken();
+        token.subscribe((res) => {
+          this.cookieService.set('spotify-token', res.access_token);
+          this.cookieService.set('token_type', res.token_type);
+          this.getPlayList(id, index);
+        }, (error) => {
+          console.log(error);
+        });
+      }
     });
   }
 }

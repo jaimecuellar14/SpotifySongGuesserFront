@@ -1,6 +1,6 @@
 <p>Select the playlist from the list of each category you chose!</p>
 
-<mat-grid-list cols="2" rowHeight="2:1">
+<mat-grid-list cols="2" rowHeight="1:1">
     <mat-grid-tile *ngFor="let category of categories; let i = index">
         <mat-accordion>
             <mat-expansion-panel (opened)="panelOpenState = true && getPlayList(this.category.id, i)"
