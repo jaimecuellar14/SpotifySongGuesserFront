@@ -37,25 +37,27 @@ export class PlaylistsComponent implements OnInit {
   }
 
   getPlayList(id, index){
-    const res = this.spotifyService.getPlayLists(id);
-    res.subscribe((playlist) => {
-      this.categories[index].playlists = playlist.playlists.items;
-      this.addModelToPlayLists(this.categories[index].playlists);
-    },
-    (error) => {
-      if (error.error.error.message === 'The access token expired') {
-        this.spotifyService._clientId = environment.client_id;
-        this.spotifyService._clientSecret = environment.client_secret;
-        const token = this.spotifyService.refreshToken();
-        token.subscribe((res) => {
-          this.cookieService.set('spotify-token', res.access_token);
-          this.cookieService.set('token_type', res.token_type);
-          this.getPlayList(id, index);
-        }, (error) => {
-          console.log(error);
-        });
-      }
-    });
+    if (!this.categories[index].playlists){
+      const res = this.spotifyService.getPlayLists(id);
+      res.subscribe((playlist) => {
+        this.categories[index].playlists = playlist.playlists.items;
+        this.addModelToPlayLists(this.categories[index].playlists);
+      },
+      (error) => {
+        if (error.error.error.message === 'The access token expired') {
+          this.spotifyService._clientId = environment.client_id;
+          this.spotifyService._clientSecret = environment.client_secret;
+          const token = this.spotifyService.refreshToken();
+          token.subscribe((res) => {
+            this.cookieService.set('spotify-token', res.access_token);
+            this.cookieService.set('token_type', res.token_type);
+            this.getPlayList(id, index);
+          }, (error) => {
+            console.log(error);
+          });
+        }
+      });
+    }
   }
 
   addModelToPlayLists(playlist){
@@ -63,7 +65,7 @@ export class PlaylistsComponent implements OnInit {
       elem.selected = false;
     });
   }
-  
+
   play(){
     const test: any = [];
     this.categories.map(category => {
