@@ -16,7 +16,7 @@
             </mat-expansion-panel-header>
             <div *ngFor="let playlist of this.category.playlists">
               <mat-list-item>
-                <mat-checkbox [labelPosition]="before"  >{{playlist.name}}</mat-checkbox>
+                <mat-checkbox [(ngModel)]="this.playlist.selected" [labelPosition]="before">{{playlist.name}}</mat-checkbox>
               </mat-list-item>
               <mat-divider></mat-divider>
             </div>
@@ -25,3 +25,4 @@
         </mat-accordion>
     </mat-grid-tile>
   </mat-grid-list>
+  <button (click)="play()">Play</button>

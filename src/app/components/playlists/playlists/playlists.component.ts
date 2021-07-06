@@ -12,6 +12,7 @@ import { environment } from '../../../../environments/environment';
 })
 export class PlaylistsComponent implements OnInit {
   categories: any;
+  selectedPlayLists: any[];
   panelOpenState: boolean;
   constructor(private router: Router, private spotifyService: SpotifyService, private cookieService: CookieService) { }
   navigation = this.router.getCurrentNavigation();
@@ -37,14 +38,11 @@ export class PlaylistsComponent implements OnInit {
 
   getPlayList(id, index){
     const res = this.spotifyService.getPlayLists(id);
-    console.log(res);
     res.subscribe((playlist) => {
-      console.log(playlist);
       this.categories[index].playlists = playlist.playlists.items;
-      console.log(this.categories[index]);
+      this.addModelToPlayLists(this.categories[index].playlists);
     },
     (error) => {
-      console.log(error.error);
       if (error.error.error.message === 'The access token expired') {
         this.spotifyService._clientId = environment.client_id;
         this.spotifyService._clientSecret = environment.client_secret;
@@ -58,6 +56,26 @@ export class PlaylistsComponent implements OnInit {
         });
       }
     });
+  }
+
+  addModelToPlayLists(playlist){
+    playlist.map((elem) => {
+      elem.selected = false;
+    });
+  }
+  
+  play(){
+    const test: any = [];
+    this.categories.map(category => {
+      if (category.playlists){
+        category.playlists.map(elem => {
+          // tslint:disable-next-line:no-unused-expression
+          elem.selected === true ? test.push(elem) : elem.selected ;
+        });
+      }
+    });
+    this.selectedPlayLists = test;
+    console.log(this.selectedPlayLists);
   }
 }
 
